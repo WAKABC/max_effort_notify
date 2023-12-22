@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: dtx-cm-charge
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.118.103:8848
+        metadata:
+          user.name: admin
+          user.password: admin
+      config:
+        server-addr: 192.168.118.103:8848
+        file-extension: yaml

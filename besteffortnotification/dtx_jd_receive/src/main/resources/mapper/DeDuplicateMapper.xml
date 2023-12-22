@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wak.jd_receive.mapper.DeDuplicateMapper">
+    <resultMap id="BaseResultMap" type="com.wak.entities.jd.DeDuplicate">
+        <!--@mbg.generated generated on Wed Nov 08 23:52:19 CST 2023.-->
+        <!--@Table de_duplicate-->
+        <id column="txno" jdbcType="VARCHAR" property="txno"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated generated on Wed Nov 08 23:52:19 CST 2023.-->
+        txno,
+        createtime
+    </sql>
+    <select id="countByTxno" resultType="java.lang.Integer">
+        <!--@mbg.generated-->
+        select count(1)
+        from de_duplicate
+        where txno = #{txno,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="addDuplicate" parameterType="java.lang.String">
+        <!--@mbg.generated-->
+        insert into de_duplicate (txno, createtime)
+        values (#{txno,jdbcType=VARCHAR}, now())
+    </insert>
+</mapper>
